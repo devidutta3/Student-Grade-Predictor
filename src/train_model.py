@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import (
@@ -75,6 +76,44 @@ def evaluate_model(
     print(f"MAE : {mae:.2f}")
     print(f"MSE : {mse:.2f}")
     print(f"R² Score : {r2:.4f}")
+
+    save_prediction_pie_chart(predictions)
+
+
+def save_prediction_pie_chart(predictions, output_path="models/prediction_distribution_pie.png"):
+    grade_labels = []
+    for prediction in predictions:
+        if prediction >= 90:
+            grade_labels.append("A")
+        elif prediction >= 80:
+            grade_labels.append("B")
+        elif prediction >= 70:
+            grade_labels.append("C")
+        elif prediction >= 60:
+            grade_labels.append("D")
+        else:
+            grade_labels.append("F")
+
+    counts = pd.Series(grade_labels).value_counts().reindex(["A", "B", "C", "D", "F"]).fillna(0)
+    labels = counts.index.tolist()
+    sizes = counts.values.tolist()
+    colors = ["#4caf50", "#8bc34a", "#ffeb3b", "#ff9800", "#f44336"]
+
+    fig, ax = plt.subplots(figsize=(6, 6))
+    ax.pie(
+        sizes,
+        labels=labels,
+        autopct="%.1f%%",
+        startangle=140,
+        colors=colors,
+        wedgeprops={"edgecolor": "white"}
+    )
+    ax.set_title("Predicted Grade Distribution")
+    ax.axis("equal")
+
+    fig.savefig(output_path, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved prediction pie chart to: {output_path}")
 
 
 def save_model(model):
