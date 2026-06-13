@@ -220,8 +220,28 @@ Response:
 
 ## 👨‍💻 Author
 
-Devidutta Das
+## 👥 Team Members
 
-Frontend Developer | Python Developer | Machine Learning Enthusiast
+### Devidutta Das
 
-YouTube Channel: CodeUdaan
+* GitHub: https://github.com/devidutta3
+
+### Dharmvir kumar
+
+* GitHub: https://github.com/DHARMVIR-AIML
+
+### Contributions
+
+*Devidutta Das*
+
+* Dataset Generation
+* Machine Learning Model Training
+* FastAPI Development
+* API Testing
+
+*Dharmvir kumar*
+
+* Data Analysis
+* Documentation
+* Project Testing
+* GitHub Repository Management
